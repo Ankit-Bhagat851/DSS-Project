@@ -1,0 +1,46 @@
+\chapter{Software}\label{app:software}
+ %% You may want to include some code in your thesis. I found this method online, and would recommend you do the same... See preamble/arduinoLanguage.tex for the file that makes it look nice.
+\begin{lstlisting}[language=Arduino]  
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+#include <Adafruit_GPS.h>
+#include <SPI.h>
+#include <SD.h>
+#include <Servo.h>
+#include <math.h>
+#include "Filter.h"
+
+/* This driver reads raw data from the BNO055, Potentiometer and GPS
+
+   Connections for ADALOGGER
+   ===========
+
+   Potentiometer
+   _____________
+   Connect one side to VCC
+   Connect other to common ground
+   Connect Middle to A0
+
+   GPS
+   _____________
+   Connect VIN to VCC
+   Connect GROUND to common ground
+   Connect GPS TX to RX1 (D0)
+   Connect GPS RX to TX1 (D1)
+
+*/
+
+/*********************************************/
+/*BNO055 (orientation) setup, variables and def'n*/
+/*********************************************/
+// Sample delay
+const float SAMPLERATE = 10;
+// Setup for the differentiation variables
+double psierror = 0;
+double dt = 0;
+double dpsierror_dt = 0;
+double previouspsierror = 0;
+
+\end{lstlisting}

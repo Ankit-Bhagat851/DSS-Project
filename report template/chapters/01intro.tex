@@ -1,0 +1,105 @@
+\chapter{How to do Sections and Other Simple Text Formatting}
+Here you should put a short introduction to your chapter. What is covered? In how much detail? Imagine you were coming back to this in 10 years time and wanted to find that one key equation, this part of the chapter should orient the reader to help find that information.
+
+\section{Sections} \label{sec:sections}
+
+Sections are great for a lower level breakdown of a topic. This first chapter generally introduces the topic of your thesis, so perhaps you have one section for an explanation of the problem you are looking to solve and another for how you are trying to solve it. An extremely sensible thing to do it use the \verb+\label{}+ tag for each section, chapter and subsection which allows easy referencing as shown in the code of section \ref{sec:sections}. %change the sec part to fig for figures, tab for tables, etc. (this is user defined for easy referencing, so you could use img for figures instead)
+
+\subsection{Subsections}
+Subsections are good for dividing up sections and...
+
+\subsubsection{Subsubsections}
+Subsubsections are good for dividing up subsections.
+
+\section{Lists}
+So you like lists?\\
+There are a few ways to do this: use the \verb+\begin{itemize}+ command, which gives bullet points, each denoted by \verb+\item+.
+\begin{itemize}
+    \item Itemize
+    \item lists
+    \item look
+    \item like
+    \item this.
+\end{itemize}
+ 
+There are other options, if you like numbered lists, use \verb+\begin{enumerate}+, with each item denoted by \verb+\item+ again.
+
+\begin{enumerate}
+    \item Enumerate
+    \item lists
+    \item look
+    \item like
+    \item this.
+\end{enumerate}
+
+You can also do fun things like this:
+
+\begin{itemize}
+    \item Wow
+    \begin{itemize}
+        \item a
+        \begin{itemize}
+            \item nested
+            \begin{itemize}
+                \item list
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+and this:
+
+\begin{enumerate}
+    \item Wow
+    \begin{enumerate}
+        \item another
+        \begin{enumerate}
+            \item nested
+            \begin{enumerate}
+                \item list
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+(Look in the source code to see how this is done)
+
+\section{Formatting}
+
+Font changes are a bit of a faff in \LaTeX{}. But you shouldn't really be using them in a thesis anyway. It can however be useful to emphasise certain words in \textbf{bold} or \textit{italics}. These can be invoked by using the \verb+\textbf{}+ and \verb+\textit{}+ commands respectively, with your text within the curly braces. Overleaf auto generates these commands using the classic Word shortcuts of cmd+B and cmd+I.
+
+\section{Tables}
+
+Tables are extremely useful for theses. They are great for showing specifications and results to different test environments etc.
+
+I use this template for my tables. Though it is easy to change to suite your own needs/style.
+
+Tables in \LaTeX{} are somehow both extremely complicated and extremely obvious once you have some idea of how to use them. I would recommend reading up on them externally\footnote{\url{https://www.overleaf.com/learn/latex/Tables}}, and fiddling with this example below to see how it works.
+
+\begin{table} [H] % this tells the compiler that a table environment is starting
+    \centering % this puts it in the horizontal centre of the page
+    \rowcolors{1}{}{Gray} % this sets up the alternating grey/white background
+    \begin{tabular}{p{3.75cm}|p{3.75cm}|p{3.75cm}|p{3.75cm}} % this sets up the tabular environment ant states the width of the columns, you could use an equation here using the \textwidth, but i have no experience with this. 
+    
+        %the following lines populate the table with data. They follow the pattern
+        % item & item & item & item \\
+        % where the ampersand denotes a vertical line, and the double slash, a new line.
+        \textbf{Thing 1} & \textbf{Thing 2}& \textbf{Thing 3} & \textbf{Thing 4}\\
+        \hline % this produces a horizontal line, this could be used elsewhere in the table
+        TODO& TODO& TODO & TODO\\
+        TODO& TODO& TODO& TODO\\
+        TODO & TODO & TODO & TODO\\
+        TODO& TODO & TODO& TODO\\
+        TODO & TODO & TODO & TODO
+        
+        \end{tabular}
+    \caption{Example Table}
+    \label{tab:ex_tab}
+\end{table}
+
+
+\section{Other things}
+Sometimes it is useful to put in a URL to your text. I have turned off the colouring of URLs in this document as I think it looks more professional, especially when printed. A URL is places in line in text using the \verb+\url{}+ command. A URL then looks like this: \url{www.google.com} and is a clickable hyperlink when viewed on a computer. 
+
+It can also be useful to put in a footnote if a thought needs continuing outside of the main body of text. This is done using the \verb+\footnote{}+ command, which does this: \footnote{This is a footnote}. Where the text of the footnote is within the curly braces.
+

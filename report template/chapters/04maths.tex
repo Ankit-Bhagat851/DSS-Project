@@ -1,0 +1,47 @@
+\chapter{Maths}
+
+One. of the main reasons for using \LaTeX{} in the first place for a document is the ease with which maths can be formatted. In this chapter I will provide an overview of how best to lay out maths in \LaTeX{}.
+
+\section{Maths overview}
+
+As with sections and chapters there are varying degrees of importance associated with mathematical information in \LaTeX{}. If you are showing an important equation, it is desirable to use a numbered `\verb+equation+' environment which allows referencing of that equation.
+
+If you want go through a proof, you will probably want to use an `\verb+align*+' environment to align the equality signs. 
+
+For out of line maths not of the same importance as an equation, you will want to use \verb+\[ `maths goes here'\]+ and for in line maths you will want to use\\ \verb+$`maths goes here'$+. With the maths going in between the \verb+[\+ and the \verb+$$+ respectively. 
+
+
+A few examples are shown below. Please see the source code to see examples of the code for these different maths environments.
+
+Equation (note the number on the right for referencing):
+
+\begin{equation}
+    lat_{int}(t) = \frac{lat_2-lat_1}{long_2-long_1}long_{int}(t)+lat_1-\frac{lat_2-lat_1}{long_2-long_1} long_1
+\end{equation}
+
+Non-equation non-inline maths:
+
+\[
+\psi_{desired}(t) = \arctan2\bigg(\frac{LengthLongitude}{LengthLatitude}\frac{(long_{int}(t)-long_b(t))}{lat_{int}(t)-lat_b(t)}\bigg).
+\]
+
+Inline maths: $long_{int}(t) = long_1 = long_2$
+
+Proof or derivation (or just a neat list in this cast) with lined up equality signs:
+
+\begin{align*}
+    m &= \frac{lat_2-lat_1}{long_2-long_1}\\
+    g &= lat_1-m\cdot long_1\\
+    a &= 1+m^2\\
+    b &= 2(mg-m\cdot lat_b(t)-long_b(t))\\
+    c &= long_b(t)^2+lat_b(t)^2+g^2-2g\cdot lat_b(t)-R^2\\
+    long_{int}(t) &= \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\end{align*}
+
+Here is an example of some more complicated maths:
+
+\begin{equation}
+    [\bm{M}^b_{RB}+\bm{M}^b_A]\bm{\dot{\nu}}+\bm{C}^b(\bm{\nu})\bm{\nu}+\bm{D}^b(\bm{\nu})\bm{\nu}+\bm{g}^b(\bm{\eta})=\bm{\tau}^b.
+\end{equation}
+
+Other people have written good summaries of how to format maths in \LaTeX{}. I will not repeat one here, I would recommend Overleaf's own documentation as a starting point. 
