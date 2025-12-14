@@ -4,7 +4,7 @@ import json
 import os
 from datetime import datetime
 
-server = 'tcp:lds.di.unipi.it'
+server = '131.114.50.57'
 database = 'Group_ID_16_DB'
 username = 'Group_ID_16'
 password = 'NKH4YFSZ'
