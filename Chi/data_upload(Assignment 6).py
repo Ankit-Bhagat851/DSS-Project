@@ -5,9 +5,9 @@ import os
 from datetime import datetime
 
 server = 'tcp:lds.di.unipi.it'
-database = 'Group_ID_22_DB'
-username = 'Group_ID_22'
-password = 'BJ4X9GI6'
+database = 'Group_ID_16_DB'
+username = 'Group_ID_16'
+password = 'NKH4YFSZ'
 
 connectionString = (
     f"DRIVER={{ODBC Driver 17 for SQL Server}};"
