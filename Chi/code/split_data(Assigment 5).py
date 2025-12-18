@@ -185,7 +185,7 @@ def extract_fact_table(input_csv, track_dim_csv, time_dim_csv, output_csv):
         writer.writerow([
             "ID_track_FK",
             "ID_time_FK",
-            "Streams_1month"
+            "streams@1month"
         ])
 
         for r in reader:
@@ -212,32 +212,12 @@ output_fact_table = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/fac
 
 extract_geo_dim(artist_file, output_geo_dim)
 
-extract_artist_dim(
-    artist_file,
-    output_geo_dim,
-    output_artist_dim
-)
+extract_artist_dim(artist_file, output_geo_dim, output_artist_dim)
 
-extract_time_dim(
-    track_file,
-    output_time_dim
-)
+extract_time_dim(track_file, output_time_dim)
 
-extract_track_dim(
-    track_file,
-    output_track_dim
-)
+extract_track_dim(track_file, output_track_dim)
 
-extract_track_artist_bridge(
-    track_file,
-    output_track_dim,
-    output_artist_dim,
-    output_track_artist_bridge
-)
+extract_track_artist_bridge(track_file, output_track_dim, output_artist_dim, output_track_artist_bridge)
 
-extract_fact_table(
-    track_file,
-    output_track_dim,
-    output_time_dim,
-    output_fact_table
-)
+extract_fact_table(track_file, output_track_dim, output_time_dim, output_fact_table)
