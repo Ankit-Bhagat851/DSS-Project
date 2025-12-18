@@ -1,0 +1,46 @@
+geo_ID,birthplace,region,country
+1,Italy,unknown,Italy
+2,Verona,Veneto,Italy
+3,Genova,Liguria,Italy
+4,unknown,unknown,unknown
+5,Rho,Lombardia,Italy
+6,Singapore,Northwest Italy,Italy
+7,Milano,Lombardia,Italy
+8,Japan,unknown,Japan
+9,Sternatia,Puglia,Italy
+10,Salerno,Campania,Italy
+11,Almería,Liguria,Italy
+12,Avellino,Campania,Italy
+13,Nocera Inferiore,Campania,Italy
+14,La Spezia,Liguria,Italy
+15,Bologna,Emilia-Romagna,Italy
+16,Vimercate,Lombardia,Italy
+17,Alpignano,Piemonte,Italy
+18,Senigallia,Central Italy,Italy
+19,Brescia,Lombardia,Italy
+20,Torino,Piemonte,Italy
+21,Roma,Lazio,Italy
+22,Napoli,Campania,Italy
+23,Olbia,Sardegna,Italy
+24,Firenze,Toscana,Italy
+25,Scampia,Campania,Italy
+26,Vicenza,Veneto,Italy
+27,Grottaglie,Puglia,Italy
+28,Nicosia,Sicilia,Italy
+29,Gallarate,Lombardia,Italy
+30,Treviso,Veneto,Italy
+31,Desenzano del Garda,Lombardia,Italy
+32,San Benedetto del Tronto,Marche,Italy
+33,Scafati,Campania,Italy
+34,Pieve Emanuele,Lombardia,Italy
+35,Montréal,Quebec,Canada
+36,San Siro,Lombardia,Italy
+37,Grugliasco,Piemonte,Italy
+38,Lodi,Lombardia,Italy
+39,Sesto San Giovanni,Lombardia,Italy
+40,Buenos Aires,Northeast Italy,Italy
+41,India,unknown,India
+42,Fiumicino,Lazio,Italy
+43,Padova,Veneto,Italy
+44,Reggio Calabria,Calabria,Italy
+45,Cagliari,Sardegna,Italy

@@ -1,240 +1,243 @@
 import csv
 from datetime import datetime
+import os
+
+OUTPUT_DIR = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # GEO DIMENSION
 def extract_geo_dim(input_csv, output_csv):
-    with open(input_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        header = next(reader)
-        data = list(reader)
-
-    birthplace_idx = header.index('birthplace')
-    region_idx = header.index('region')
-    country_idx = header.index('country')
-
-    geo_records = {}
+    geo_map = {}
     geo_id = 1
 
-    for row in data:
-        key = (
-            row[birthplace_idx].strip(),
-            row[region_idx].strip(),
-            row[country_idx].strip()
-        )
-        if key not in geo_records:
-            geo_records[key] = geo_id
-            geo_id += 1
+    with open(input_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            key = (
+                r["birth_place"].strip(),
+                r["region"].strip(),
+                r["country"].strip()
+            )
+            if key not in geo_map:
+                geo_map[key] = geo_id
+                geo_id += 1
 
-    with open(output_csv, 'w', newline='', encoding='utf-8') as f:
+    with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(['geo_ID', 'birthplace', 'region', 'country'])
-        for (birthplace, region, country), gid in geo_records.items():
-            writer.writerow([gid, birthplace, region, country])
+        writer.writerow(["geo_ID", "birthplace", "region", "country"])
+        for (b, r, c), gid in geo_map.items():
+            writer.writerow([gid, b, r, c])
 
 # ARTIST DIMENSION
 def extract_artist_dim(input_csv, geo_dim_csv, output_csv):
-    geo_map = {}
-    with open(geo_dim_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        next(reader)
-        for row in reader:
-            geo_map[(row[1], row[2], row[3])] = row[0]
+    geo_lookup = {}
+    with open(geo_dim_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            geo_lookup[(r["birthplace"], r["region"], r["country"])] = r["geo_ID"]
 
-    with open(input_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        header = next(reader)
-        data = list(reader)
-
-    artist_idx = header.index('id_author')
-    gender_idx = header.index('gender')
-    birthplace_idx = header.index('birthplace')
-    region_idx = header.index('region')
-    country_idx = header.index('country')
-
-    artist_records = {}
+    artist_map = {}
     artist_id = 1
 
-    for row in data:
-        geo_fk = geo_map.get(
-            (row[birthplace_idx], row[region_idx], row[country_idx])
-        )
-        key = (row[artist_idx], row[gender_idx], geo_fk)
+    with open(input_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            geo_fk = geo_lookup.get(
+                (r["birth_place"], r["region"], r["country"])
+            )
+            key = (r["id_author"], r["gender"], geo_fk)
+            if key not in artist_map:
+                artist_map[key] = artist_id
+                artist_id += 1
 
-        if key not in artist_records:
-            artist_records[key] = artist_id
-            artist_id += 1
-
-    with open(output_csv, 'w', newline='', encoding='utf-8') as f:
+    with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(['ID_artist', 'ID_artist_original', 'gender', 'geo_ID_FK'])
-        for (orig_id, gender, geo_fk), aid in artist_records.items():
-            writer.writerow([aid, orig_id, gender, geo_fk])
+        writer.writerow(["ID_artist", "ID_artist_original", "gender", "geo_ID_FK"])
+        for (orig, gender, geo_fk), aid in artist_map.items():
+            writer.writerow([aid, orig, gender, geo_fk])
 
 # TIME DIMENSION
 def extract_time_dim(input_csv, output_csv):
-    with open(input_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        header = next(reader)
-        data = list(reader)
-
-    year_idx = header.index('year')
-    month_idx = header.index('month')
-    day_idx = header.index('day')
-
-    time_records = {}
+    time_map = {}
     time_id = 1
 
-    for row in data:
-        try:
-            y = int(float(row[year_idx]))
-            m = int(float(row[month_idx]))
-            d = int(float(row[day_idx]))
+    with open(input_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            try:
+                dt = datetime(
+                    int(r["year"]),
+                    int(r["month"]),
+                    int(r["day"])
+                )
 
-            dt = datetime(y, m, d)
-            day_of_week = dt.strftime('%A')
-            season = (m % 12 + 3) // 3
+                season = (
+                    "winter" if dt.month in [12,1,2] else
+                    "spring" if dt.month in [3,4,5] else
+                    "summer" if dt.month in [6,7,8] else
+                    "autumn"
+                )
 
-            key = (d, day_of_week, y, m, season)
-            if key not in time_records:
-                time_records[key] = time_id
-                time_id += 1
-        except:
-            continue
+                key = (
+                    dt.strftime("%A"),
+                    dt.year,
+                    dt.month,
+                    season
+                )
 
-    with open(output_csv, 'w', newline='', encoding='utf-8') as f:
+                if key not in time_map:
+                    time_map[key] = time_id
+                    time_id += 1
+            except:
+                continue
+
+    with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(['ID_time', 'day', 'day_of_week', 'year', 'month', 'season'])
-        for (d, dow, y, m, s), tid in time_records.items():
-            writer.writerow([tid, d, dow, y, m, s])
+        writer.writerow(["ID_time", "day_of_week", "year", "month", "season"])
+        for (dow, y, m, s), tid in time_map.items():
+            writer.writerow([tid, dow, y, m, s])
 
 # TRACK DIMENSION
-def extract_track_dim(input_csv, time_dim_csv, output_csv):
-    time_map = {}
-    with open(time_dim_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        next(reader)
-        for row in reader:
-            time_map[(row[3], row[4])] = row[0]  # year, month
-
-    with open(input_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        header = next(reader)
-        data = list(reader)
-
-    id_idx = header.index('id')
-    title_idx = header.index('title')
-    song_cat_idx = header.index('song_category')
-    year_idx = header.index('year')
-    month_idx = header.index('month')
-
-    track_records = {}
+def extract_track_dim(input_csv, output_csv):
+    track_map = {}
     track_id = 1
 
-    for row in data:
-        time_fk = time_map.get((row[year_idx], row[month_idx]))
-        key = (row[id_idx], row[title_idx], row[song_cat_idx], time_fk)
+    with open(input_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            key = (
+                r["id"],
+                r["song_category"]
+            )
+            if key not in track_map:
+                track_map[key] = track_id
+                track_id += 1
 
-        if key not in track_records:
-            track_records[key] = track_id
-            track_id += 1
-
-    with open(output_csv, 'w', newline='', encoding='utf-8') as f:
+    with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow([
-            'ID_track',
-            'ID_track_original',
-            'title',
-            'song_category',
-            'ID_time_FK'
+            "ID_track",
+            "ID_track_original",
+            "song_category"
         ])
-        for (orig, title, cat, tfk), tid in track_records.items():
-            writer.writerow([tid, orig, title, cat, tfk])
+        for (orig, cat), tid in track_map.items():
+            writer.writerow([tid, orig, cat])
 
 # TRACK-ARTIST BRIDGE
 def extract_track_artist_bridge(input_csv, track_dim_csv, artist_dim_csv, output_csv):
-    track_map = {}
-    with open(track_dim_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        next(reader)
-        for row in reader:
-            track_map[row[1]] = row[0]
+    track_lookup = {}
+    with open(track_dim_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            track_lookup[r["ID_track_original"]] = r["ID_track"]
 
-    artist_map = {}
-    with open(artist_dim_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        next(reader)
-        for row in reader:
-            artist_map[row[1]] = row[0]
+    artist_lookup = {}
+    with open(artist_dim_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            artist_lookup[r["ID_artist_original"]] = r["ID_artist"]
 
-    with open(input_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        header = next(reader)
-        data = list(reader)
+    rows = []
 
-    track_idx = header.index('id')
-    artist_idx = header.index('id_artist')
-    feat_idx = header.index('featured_artists')
+    with open(input_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            track_fk = track_lookup.get(r["id"])
+            main_fk = artist_lookup.get(r["id_artist"])
 
-    records = []
+            if track_fk and main_fk:
+                rows.append([track_fk, main_fk, "main"])
 
-    for row in data:
-        track_fk = track_map.get(row[track_idx])
-        artist_fk = artist_map.get(row[artist_idx])
+                if r["featured_artists"]:
+                    for feat in r["featured_artists"].split(","):
+                        feat_fk = artist_lookup.get(feat.strip())
+                        if feat_fk:
+                            rows.append([track_fk, feat_fk, "feature"])
 
-        if track_fk and artist_fk:
-            records.append((track_fk, artist_fk, 'main', 0.8))
-
-            if row[feat_idx]:
-                for feat in row[feat_idx].split(','):
-                    feat_fk = artist_map.get(feat.strip())
-                    if feat_fk:
-                        records.append((track_fk, feat_fk, 'feature', 0.2))
-
-    with open(output_csv, 'w', newline='', encoding='utf-8') as f:
+    with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(['ID_track_FK', 'ID_artist_FK', 'role', 'weight'])
-        writer.writerows(records)
+        writer.writerow([
+            "ID_track_FK",
+            "ID_artist_FK",
+            "role"
+        ])
+        writer.writerows(rows)
 
 # FACT TABLE
-def extract_fact_table(input_csv, track_dim_csv, output_csv):
-    track_map = {}
-    with open(track_dim_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        next(reader)
-        for row in reader:
-            track_map[row[1]] = row[0]
+def extract_fact_table(input_csv, track_dim_csv, time_dim_csv, output_csv):
+    track_lookup = {}
+    with open(track_dim_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            track_lookup[r["ID_track_original"]] = r["ID_track"]
 
-    with open(input_csv, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        header = next(reader)
-        data = list(reader)
+    time_lookup = {}
+    with open(time_dim_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            time_lookup[(r["year"], r["month"])] = r["ID_time"]
 
-    track_idx = header.index('id')
-    streams_idx = header.index('streams@1month')
+    with open(input_csv, encoding="utf-8") as f, \
+         open(output_csv, "w", newline="", encoding="utf-8") as out:
 
-    with open(output_csv, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f)
-        writer.writerow(['ID_track_FK', 'Streams_1month'])
+        reader = csv.DictReader(f)
+        writer = csv.writer(out)
+        writer.writerow([
+            "ID_track_FK",
+            "ID_time_FK",
+            "Streams_1month"
+        ])
 
-        for row in data:
-            track_fk = track_map.get(row[track_idx])
-            if track_fk:
-                writer.writerow([track_fk, row[streams_idx]])
+        for r in reader:
+            track_fk = track_lookup.get(r["id"])
+            time_fk = time_lookup.get((r["year"], r["month"]))
+
+            if track_fk and time_fk:
+                writer.writerow([
+                    track_fk,
+                    time_fk,
+                    r["streams@1month"]
+                ])
 
 # EXECUTION
-artist_file = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/LDS Data 2025-2026/artists.csv"
-track_file  = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/LDS Data 2025-2026/tracks.csv"
+artist_file = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/LDS Data 2025-2026/artists_cleaned.csv"
+track_file  = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/LDS Data 2025-2026/tracks_cleaned_with_song_category.csv"
 
-output_geo_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/output/geo_dim.csv"
-output_artist_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/output/artist_dim.csv"
-output_time_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/output/time_dim.csv"
-output_track_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/output/track_dim.csv"
-output_track_artist_bridge = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/output/track_artist_bridge.csv"
-output_fact_table = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/output/fact_streams.csv"
+output_geo_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/geo_dim.csv"
+output_artist_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/artist_dim.csv"
+output_time_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/time_dim.csv"
+output_track_dim = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/track_dim.csv"
+output_track_artist_bridge = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/track_artist_bridge.csv"
+output_fact_table = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/fact_streams.csv"
 
 extract_geo_dim(artist_file, output_geo_dim)
-extract_artist_dim(artist_file, output_geo_dim, output_artist_dim)
-extract_time_dim(track_file, output_time_dim)
-extract_track_dim(track_file, output_time_dim, output_track_dim)
-extract_track_artist_bridge(track_file, output_track_dim, output_artist_dim, output_track_artist_bridge)
-extract_fact_table(track_file, output_track_dim, output_fact_table)
+
+extract_artist_dim(
+    artist_file,
+    output_geo_dim,
+    output_artist_dim
+)
+
+extract_time_dim(
+    track_file,
+    output_time_dim
+)
+
+extract_track_dim(
+    track_file,
+    output_track_dim
+)
+
+extract_track_artist_bridge(
+    track_file,
+    output_track_dim,
+    output_artist_dim,
+    output_track_artist_bridge
+)
+
+extract_fact_table(
+    track_file,
+    output_track_dim,
+    output_time_dim,
+    output_fact_table
+)
