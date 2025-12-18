@@ -1,46 +1,46 @@
-geo_ID,birthplace,region,country
-1,Italy,unknown,Italy
-2,Verona,Veneto,Italy
-3,Genova,Liguria,Italy
-4,unknown,unknown,unknown
-5,Rho,Lombardia,Italy
-6,Singapore,Northwest Italy,Italy
-7,Milano,Lombardia,Italy
-8,Japan,unknown,Japan
-9,Sternatia,Puglia,Italy
-10,Salerno,Campania,Italy
-11,Almería,Liguria,Italy
-12,Avellino,Campania,Italy
-13,Nocera Inferiore,Campania,Italy
-14,La Spezia,Liguria,Italy
-15,Bologna,Emilia-Romagna,Italy
-16,Vimercate,Lombardia,Italy
-17,Alpignano,Piemonte,Italy
-18,Senigallia,Central Italy,Italy
-19,Brescia,Lombardia,Italy
-20,Torino,Piemonte,Italy
-21,Roma,Lazio,Italy
-22,Napoli,Campania,Italy
-23,Olbia,Sardegna,Italy
-24,Firenze,Toscana,Italy
-25,Scampia,Campania,Italy
-26,Vicenza,Veneto,Italy
-27,Grottaglie,Puglia,Italy
-28,Nicosia,Sicilia,Italy
-29,Gallarate,Lombardia,Italy
-30,Treviso,Veneto,Italy
-31,Desenzano del Garda,Lombardia,Italy
-32,San Benedetto del Tronto,Marche,Italy
-33,Scafati,Campania,Italy
-34,Pieve Emanuele,Lombardia,Italy
-35,Montréal,Quebec,Canada
-36,San Siro,Lombardia,Italy
-37,Grugliasco,Piemonte,Italy
-38,Lodi,Lombardia,Italy
-39,Sesto San Giovanni,Lombardia,Italy
-40,Buenos Aires,Northeast Italy,Italy
-41,India,unknown,India
-42,Fiumicino,Lazio,Italy
-43,Padova,Veneto,Italy
-44,Reggio Calabria,Calabria,Italy
-45,Cagliari,Sardegna,Italy
+geo_ID,birthplace,region,country,longitude,latitude
+1,Italy,unknown,Italy,unknown,unknown
+2,Verona,Veneto,Italy,10.9857377,45.4424977
+3,Genova,Liguria,Italy,8.9338624,44.40726
+4,unknown,unknown,unknown,unknown,unknown
+5,Rho,Lombardia,Italy,9.04156,45.528878
+6,Singapore,Northwest Italy,Italy,7.6707168,45.0806268
+7,Milano,Lombardia,Italy,9.1896346,45.4641943
+8,Japan,unknown,Japan,unknown,unknown
+9,Sternatia,Puglia,Italy,18.225226,40.222125
+10,Salerno,Campania,Italy,15.3106085,40.4194416
+11,Almería,Liguria,Italy,8.9234821,44.4194958
+12,Avellino,Campania,Italy,15.140569,40.9965446
+13,Nocera Inferiore,Campania,Italy,14.6433202,40.7472133
+14,La Spezia,Liguria,Italy,9.6912326,44.238366
+15,Bologna,Emilia-Romagna,Italy,11.3426327,44.4938203
+16,Vimercate,Lombardia,Italy,9.37006,45.6139627
+17,Alpignano,Piemonte,Italy,7.5254027,45.0957237
+18,Senigallia,Central Italy,Italy,13.2179488,43.7149517
+19,Brescia,Lombardia,Italy,10.425873,45.7795804
+20,Torino,Piemonte,Italy,7.6824892,45.0677551
+21,Roma,Lazio,Italy,12.4829321,41.8933203
+22,Napoli,Campania,Italy,14.2487679,40.8358846
+23,Olbia,Sardegna,Italy,9.5027442,40.9232659
+24,Firenze,Toscana,Italy,11.2556404,43.7697955
+25,Scampia,Campania,Italy,14.2410519,40.8999881
+26,Vicenza,Veneto,Italy,11.4063543,45.6348591
+27,Grottaglie,Puglia,Italy,17.4342206,40.5361927
+28,Nicosia,Sicilia,Italy,14.397271,37.747452
+29,Gallarate,Lombardia,Italy,8.7932013,45.6598951
+30,Treviso,Veneto,Italy,12.2063158,45.8066913
+31,Desenzano del Garda,Lombardia,Italy,10.5389467,45.4694851
+32,San Benedetto del Tronto,Marche,Italy,13.8807144,42.9525328
+33,Scafati,Campania,Italy,14.5269491,40.7499887
+34,Pieve Emanuele,Lombardia,Italy,9.2020722,45.3559126
+35,Montréal,Quebec,Canada,-73.5698065,45.5031824
+36,San Siro,Lombardia,Italy,9.123964,45.4782003
+37,Grugliasco,Piemonte,Italy,7.57762,45.068046
+38,Lodi,Lombardia,Italy,9.4916781,45.2613104
+39,Sesto San Giovanni,Lombardia,Italy,9.2376549,45.5357218
+40,Buenos Aires,Northeast Italy,Italy,10.1430038,44.8037407
+41,India,unknown,India,unknown,unknown
+42,Fiumicino,Lazio,Italy,12.2278855,41.7712145
+43,Padova,Veneto,Italy,11.8058487,45.391408
+44,Reggio Calabria,Calabria,Italy,15.6397556,38.1035389
+45,Cagliari,Sardegna,Italy,9.113311,39.2171994

@@ -7,95 +7,150 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # GEO DIMENSION
 def extract_geo_dim(input_csv, output_csv):
+    with open(input_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        rows = list(reader)
+
     geo_map = {}
     geo_id = 1
 
-    with open(input_csv, encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for r in reader:
-            key = (
-                r["birth_place"].strip(),
-                r["region"].strip(),
-                r["country"].strip()
-            )
-            if key not in geo_map:
-                geo_map[key] = geo_id
-                geo_id += 1
+    for r in rows:
+        key = (
+            r["birth_place"].strip(),
+            r["region"].strip(),
+            r["country"].strip(),
+            r.get("longitude", "").strip(),
+            r.get("latitude", "").strip()
+        )
 
-    with open(output_csv, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["geo_ID", "birthplace", "region", "country"])
-        for (b, r, c), gid in geo_map.items():
-            writer.writerow([gid, b, r, c])
+        if key not in geo_map:
+            geo_map[key] = geo_id
+            geo_id += 1
+
+    with open(output_csv, "w", newline="", encoding="utf-8") as out:
+        writer = csv.writer(out)
+        writer.writerow([
+            "geo_ID",
+            "birthplace",
+            "region",
+            "country",
+            "longitude",
+            "latitude"
+        ])
+
+        for (bp, reg, ctry, lon, lat), gid in geo_map.items():
+            writer.writerow([gid, bp, reg, ctry, lon, lat])
 
 # ARTIST DIMENSION
 def extract_artist_dim(input_csv, geo_dim_csv, output_csv):
+    # load geo FK
     geo_lookup = {}
     with open(geo_dim_csv, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for r in reader:
-            geo_lookup[(r["birthplace"], r["region"], r["country"])] = r["geo_ID"]
+            key = (
+                r["birthplace"],
+                r["region"],
+                r["country"],
+                r["longitude"],
+                r["latitude"]
+            )
+            geo_lookup[key] = r["geo_ID"]
+
+    with open(input_csv, encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        rows = list(reader)
 
     artist_map = {}
     artist_id = 1
 
-    with open(input_csv, encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for r in reader:
-            geo_fk = geo_lookup.get(
-                (r["birth_place"], r["region"], r["country"])
-            )
-            key = (r["id_author"], r["gender"], geo_fk)
-            if key not in artist_map:
-                artist_map[key] = artist_id
-                artist_id += 1
+    for r in rows:
+        geo_key = (
+            r["birth_place"].strip(),
+            r["region"].strip(),
+            r["country"].strip(),
+            r.get("longitude", "").strip(),
+            r.get("latitude", "").strip()
+        )
 
-    with open(output_csv, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["ID_artist", "ID_artist_original", "gender", "geo_ID_FK"])
-        for (orig, gender, geo_fk), aid in artist_map.items():
-            writer.writerow([aid, orig, gender, geo_fk])
+        geo_fk = geo_lookup.get(geo_key)
+
+        key = (
+            r["id_author"],
+            r["gender"],
+            r["birth_date"],
+            geo_fk
+        )
+
+        if key not in artist_map:
+            artist_map[key] = artist_id
+            artist_id += 1
+
+    with open(output_csv, "w", newline="", encoding="utf-8") as out:
+        writer = csv.writer(out)
+        writer.writerow([
+            "ID_artist",
+            "ID_artist_original",
+            "gender",
+            "birth_date",
+            "geo_ID_FK"
+        ])
+
+        for (orig, gender, bdate, geo_fk), aid in artist_map.items():
+            writer.writerow([aid, orig, gender, bdate, geo_fk])
 
 # TIME DIMENSION
 def extract_time_dim(input_csv, output_csv):
-    time_map = {}
-    time_id = 1
+    import csv
+    from datetime import datetime
 
     with open(input_csv, encoding="utf-8") as f:
         reader = csv.DictReader(f)
+
+        time_records = {}
+        time_id = 1
+
         for r in reader:
             try:
-                dt = datetime(
-                    int(r["year"]),
-                    int(r["month"]),
-                    int(r["day"])
-                )
+                year = int(float(r["year"]))
+                month = int(float(r["month"]))
+                day = int(float(r["day"]))
 
-                season = (
-                    "winter" if dt.month in [12,1,2] else
-                    "spring" if dt.month in [3,4,5] else
-                    "summer" if dt.month in [6,7,8] else
-                    "autumn"
-                )
+                # assume invalid rows already removed,
+                # but keep a safety check
+                if year <= 0 or month < 1 or day < 1:
+                    continue
 
-                key = (
-                    dt.strftime("%A"),
-                    dt.year,
-                    dt.month,
-                    season
-                )
+                dt = datetime(year, month, day)
+                day_of_week = dt.strftime("%A")
+                season = (month % 12 + 3) // 3
 
-                if key not in time_map:
-                    time_map[key] = time_id
+                key = (year, month, day)
+
+                if key not in time_records:
+                    time_records[key] = (
+                        time_id,
+                        day_of_week,
+                        season
+                    )
                     time_id += 1
-            except:
+
+            except Exception:
                 continue
 
     with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["ID_time", "day_of_week", "year", "month", "season"])
-        for (dow, y, m, s), tid in time_map.items():
-            writer.writerow([tid, dow, y, m, s])
+        writer.writerow([
+            "ID_time",
+            "year",
+            "month",
+            "day",
+            "day_of_week",
+            "season"
+        ])
+
+        for (y, m, d), (tid, dow, s) in time_records.items():
+            writer.writerow([tid, y, m, d, dow, s])
 
 # TRACK DIMENSION
 def extract_track_dim(input_csv, output_csv):
@@ -165,32 +220,54 @@ def extract_track_artist_bridge(input_csv, track_dim_csv, artist_dim_csv, output
 
 # FACT TABLE
 def extract_fact_table(input_csv, track_dim_csv, time_dim_csv, output_csv):
+    # -----------------------
+    # Track lookup
+    # -----------------------
     track_lookup = {}
     with open(track_dim_csv, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for r in reader:
             track_lookup[r["ID_track_original"]] = r["ID_track"]
 
+    # -----------------------
+    # Time lookup
+    # -----------------------
     time_lookup = {}
     with open(time_dim_csv, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for r in reader:
-            time_lookup[(r["year"], r["month"])] = r["ID_time"]
+            key = (
+                int(r["year"]),
+                int(r["month"]),
+                int(r["day"])
+            )
+            time_lookup[key] = r["ID_time"]
 
+    # -----------------------
+    # FACT TABLE
+    # -----------------------
     with open(input_csv, encoding="utf-8") as f, \
          open(output_csv, "w", newline="", encoding="utf-8") as out:
 
         reader = csv.DictReader(f)
         writer = csv.writer(out)
+
         writer.writerow([
             "ID_track_FK",
             "ID_time_FK",
-            "streams@1month"
+            "streams_1month"
         ])
 
         for r in reader:
+            try:
+                year  = int(float(r["year"]))
+                month = int(float(r["month"]))
+                day   = int(float(r["day"]))
+            except:
+                continue
+
             track_fk = track_lookup.get(r["id"])
-            time_fk = time_lookup.get((r["year"], r["month"]))
+            time_fk  = time_lookup.get((year, month, day))
 
             if track_fk and time_fk:
                 writer.writerow([
@@ -211,13 +288,8 @@ output_track_artist_bridge = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/
 output_fact_table = r"/Users/huynhphuongchi/Desktop/Unipi/DSS/Module 2/table/fact_streams.csv"
 
 extract_geo_dim(artist_file, output_geo_dim)
-
 extract_artist_dim(artist_file, output_geo_dim, output_artist_dim)
-
 extract_time_dim(track_file, output_time_dim)
-
-extract_track_dim(track_file, output_track_dim)
-
+extract_track_dim(track_file, output_track_dim)         
 extract_track_artist_bridge(track_file, output_track_dim, output_artist_dim, output_track_artist_bridge)
-
 extract_fact_table(track_file, output_track_dim, output_time_dim, output_fact_table)
