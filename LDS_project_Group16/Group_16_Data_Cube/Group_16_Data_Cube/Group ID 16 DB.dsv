@@ -1,0 +1,200 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="b5678b69-926a-4daa-ac29-f9dad07a18bd" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Group ID 16 DB</ID>
+  <Name>Group ID 16 DB</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:NameMatchingCriteria</Name>
+      <Value>1</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>Group ID 16 DB</DataSourceID>
+  <Schema>
+    <xs:schema id="Group_x0020_ID_x0020_16_x0020_DB" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="Group_x0020_ID_x0020_16_x0020_DB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="53fafb2e-aa99-4462-b42e-3ee54c020718">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_geo_dim" msprop:DbTableName="geo_dim" msprop:FriendlyName="geo_dim" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="b1e76904-4948-4840-b503-8ec447ed9d6f">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="geo_ID" msprop:FriendlyName="geo_ID" msprop:DbColumnName="geo_ID" msprop:design-time-name="9a86c2ad-bf55-41d2-836a-7eae869b29a1" type="xs:int" />
+                  <xs:element name="birthplace" msprop:FriendlyName="birthplace" msprop:DbColumnName="birthplace" msprop:design-time-name="84768c31-172f-43ea-a271-8fa27d005c0b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="region" msprop:FriendlyName="region" msprop:DbColumnName="region" msprop:design-time-name="79619dbc-5927-4b43-ad4a-dcc686ed15bd" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="country" msprop:FriendlyName="country" msprop:DbColumnName="country" msprop:design-time-name="254810aa-fba3-437d-9688-f9c24b1017b9" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="longitude" msprop:FriendlyName="longitude" msprop:DbColumnName="longitude" msprop:design-time-name="83f7367f-5f8d-46ce-baee-4ec25f819630" type="xs:double" minOccurs="0" />
+                  <xs:element name="latitude" msprop:FriendlyName="latitude" msprop:DbColumnName="latitude" msprop:design-time-name="9bef246f-a779-49d0-83a8-6f03c31d5ed7" type="xs:double" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_artist_dim" msprop:DbTableName="artist_dim" msprop:FriendlyName="artist_dim" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="2faffab3-273c-4899-827c-cae33642159b">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_artist" msprop:FriendlyName="ID_artist" msprop:DbColumnName="ID_artist" msprop:design-time-name="ef71f668-9f7b-4b52-82e3-79fb8cfb3bc3" type="xs:int" />
+                  <xs:element name="ID_artist_original" msprop:FriendlyName="ID_artist_original" msprop:DbColumnName="ID_artist_original" msprop:design-time-name="d54391ab-692a-44c4-b500-cdd250f40bdf" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="gender" msprop:FriendlyName="gender" msprop:DbColumnName="gender" msprop:design-time-name="5fd634b1-d205-45af-9433-e7c1a85c3ad8" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="birth_date" msprop:FriendlyName="birth_date" msprop:DbColumnName="birth_date" msprop:design-time-name="55d4bafc-620c-48b9-b11f-4e569e6cd489" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="geo_ID_FK" msprop:FriendlyName="geo_ID_FK" msprop:DbColumnName="geo_ID_FK" msprop:design-time-name="08c66b60-48a3-4303-bffb-a3ae773bc850" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_time_dim" msprop:DbTableName="time_dim" msprop:FriendlyName="time_dim" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="87e07814-bb13-4862-bae1-94934202be2a">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_time" msprop:FriendlyName="ID_time" msprop:DbColumnName="ID_time" msprop:design-time-name="4c06633c-2181-490a-9ea1-e9d8710c10a1" type="xs:int" />
+                  <xs:element name="year" msprop:FriendlyName="year" msprop:DbColumnName="year" msprop:design-time-name="3300ef2e-66dc-4866-8955-e1015d75dff4" type="xs:int" minOccurs="0" />
+                  <xs:element name="month" msprop:FriendlyName="month" msprop:DbColumnName="month" msprop:design-time-name="b88750b6-d7a3-4dec-b90e-461d85ca242f" type="xs:int" minOccurs="0" />
+                  <xs:element name="day" msprop:FriendlyName="day" msprop:DbColumnName="day" msprop:design-time-name="17511e33-14d6-4fe8-bddc-472538244adb" type="xs:int" minOccurs="0" />
+                  <xs:element name="day_of_week" msprop:FriendlyName="day_of_week" msprop:DbColumnName="day_of_week" msprop:design-time-name="f9066db5-6612-4471-9f4b-4a0e585ebed7" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="season" msprop:FriendlyName="season" msprop:DbColumnName="season" msprop:design-time-name="f9f7f350-fcbd-4e30-a94f-15a96c01d27a" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_track_dim" msprop:DbTableName="track_dim" msprop:FriendlyName="track_dim" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="d99374f7-59a5-40f7-a700-43d21e0e1b54">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_track" msprop:FriendlyName="ID_track" msprop:DbColumnName="ID_track" msprop:design-time-name="3cb83808-1efa-4adf-b6fb-d844ca76413d" type="xs:int" />
+                  <xs:element name="ID_track_original" msprop:FriendlyName="ID_track_original" msprop:DbColumnName="ID_track_original" msprop:design-time-name="a98bb981-65ef-4961-9a61-cb32e76c60be" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="song_category" msprop:FriendlyName="song_category" msprop:DbColumnName="song_category" msprop:design-time-name="bd4c9619-61d1-480b-908f-27dd21e00f1c" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_fact_table" msprop:DbTableName="fact_table" msprop:FriendlyName="fact_table" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="3fba5c27-55e6-43c4-91db-61dd8cb4298b">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_track_FK" msprop:FriendlyName="ID_track_FK" msprop:DbColumnName="ID_track_FK" msprop:design-time-name="4e121e69-d070-492e-9bea-f8c0c0bd8542" type="xs:int" />
+                  <xs:element name="ID_time_FK" msprop:FriendlyName="ID_time_FK" msprop:DbColumnName="ID_time_FK" msprop:design-time-name="4f33c859-c15f-4768-99fd-ee603d3efa89" type="xs:int" />
+                  <xs:element name="streams_1month" msprop:FriendlyName="streams_1month" msprop:DbColumnName="streams_1month" msprop:design-time-name="761c8b09-0865-4b40-985e-43c13255c895" type="xs:long" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_track_artist_bridge" msprop:DbTableName="track_artist_bridge" msprop:FriendlyName="track_artist_bridge" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="530cf439-e40c-4804-b8c4-9e52efc30339">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_track_FK" msprop:FriendlyName="ID_track_FK" msprop:DbColumnName="ID_track_FK" msprop:design-time-name="d7a45e1a-36d2-413e-8b0f-7f7853951ee1" type="xs:int" />
+                  <xs:element name="ID_artist_FK" msprop:FriendlyName="ID_artist_FK" msprop:DbColumnName="ID_artist_FK" msprop:design-time-name="629385b9-3f9f-4704-8344-5eff898607b6" type="xs:int" />
+                  <xs:element name="role" msprop:FriendlyName="role" msprop:DbColumnName="role" msprop:design-time-name="b78b0cfd-57a1-4df0-91a5-e45a09729771" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_geo_dim" />
+          <xs:field xpath="geo_ID" />
+        </xs:unique>
+        <xs:unique name="dbo_artist_dim_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_artist_dim" />
+          <xs:field xpath="ID_artist" />
+        </xs:unique>
+        <xs:unique name="dbo_time_dim_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_time_dim" />
+          <xs:field xpath="ID_time" />
+        </xs:unique>
+        <xs:unique name="dbo_track_dim_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_track_dim" />
+          <xs:field xpath="ID_track" />
+        </xs:unique>
+        <xs:unique name="dbo_fact_table_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_fact_table" />
+          <xs:field xpath="ID_track_FK" />
+          <xs:field xpath="ID_time_FK" />
+        </xs:unique>
+        <xs:unique name="dbo_track_artist_bridge_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_track_artist_bridge" />
+          <xs:field xpath="ID_track_FK" />
+          <xs:field xpath="ID_artist_FK" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <Group_x0020_ID_x0020_16_x0020_DB xmlns="" />
+  </Schema>
+</DataSourceView>

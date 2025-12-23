@@ -1,0 +1,294 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="18279492-cd2f-454e-9b82-01e231a31a07" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Group ID 16 DB</ID>
+  <Name>Group ID 16 DB</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="5" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-6129" scrolltop="-4562" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="15600" y="11070" backcolor="2039583" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="fact_table" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3302" height="1947" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000e60c00009b070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_fact_table" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="track_artist_bridge" left="0" top="0" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="3000" height="1842" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b000032070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_track_artist_bridge" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" left="4763" top="-2044" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="3112" height="2519" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000280c0000d7090000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_artist_dim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" left="4686" top="964" logicalid="4" controlid="4" masterid="0" hint1="0" hint2="0" width="3090" height="1842" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000120c000032070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_track_dim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-6129</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-4562</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-2044</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="598a6bd3-09fe-4fc7-b45e-a6a84d020e45">
+      <ID>Fact Table</ID>
+      <Name>Fact Table</Name>
+      <DimensionID>Fact Table</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="6af10f53-6357-44fd-a28c-2cbe57fbf96f">
+          <AttributeID>ID Track FK</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="c883b4f0-2e77-4e22-98bd-9daed5c2650a">
+      <ID>Artist Dim</ID>
+      <Name>Artist Dim</Name>
+      <DimensionID>Artist Dim</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="8fa3c5d0-86b0-49b1-afb7-9922d705d515">
+          <AttributeID>ID Artist</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="ed0d5f3b-cab4-4467-9b05-922a079c034f">
+          <AttributeID>ID Artist Original</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="f5dd395e-19b8-42fc-a0e5-69f761e14c4c">
+          <AttributeID>Gender</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="0b64a25f-2596-4f0c-bf4f-9336530813cb">
+          <AttributeID>Birth Date</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="f18a31b0-bf0c-4612-a656-2668478bedf0">
+          <AttributeID>Geo ID FK</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="00c38773-a56f-472a-9600-155207d7160d">
+      <ID>Track Dim</ID>
+      <Name>Track Dim</Name>
+      <DimensionID>Track Dim</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="868ff606-431b-414a-9ddf-64f6662492a9">
+          <AttributeID>ID Track</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="b2e07803-5206-4c3f-9308-75715ba63069">
+          <AttributeID>ID Track Original</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="77a22a27-4ec6-44e1-92f9-e85266db436c">
+          <AttributeID>Song Category</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="a5e1eadd-af40-4143-9d0d-2d42a6d04a10">
+      <ID>Fact Table</ID>
+      <Name>Fact Table</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="63ea8d4d-13ef-4f7d-bec8-9512015bfe28">
+          <ID>Streams 1month</ID>
+          <Name>Streams 1month</Name>
+          <Source dwd:design-time-name="7dde4b9f-2696-4621-8d56-b868c9d11f1c">
+            <DataType>BigInt</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="bb207bb4-fd95-4bbd-a8b7-217c45d7397d">
+              <TableID>dbo_fact_table</TableID>
+              <ColumnID>streams_1month</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="61b73ed6-720c-4720-8d4b-0346d8458bea">
+          <CubeDimensionID>Fact Table</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="2149bfe7-b4ba-4d33-9c51-35070fe7c962">
+              <AttributeID>ID Track FK</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="88fa91fd-7e73-4b4b-92ea-51f79e47ca32">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="74d0d491-dc34-42f8-b84b-04f53d18f00a">
+                    <TableID>dbo_fact_table</TableID>
+                    <ColumnID>ID_track_FK</ColumnID>
+                  </Source>
+                </KeyColumn>
+                <KeyColumn dwd:design-time-name="a1a50dba-4188-40ee-9971-235bd284019d">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="e2adab5b-c68a-47d9-b948-2a3a6fac5653">
+                    <TableID>dbo_fact_table</TableID>
+                    <ColumnID>ID_time_FK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="902a3e7f-1a12-4773-9a67-d0df10d1467c">
+          <CubeDimensionID>Track Dim</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="5b383e2a-3b19-407e-a277-dbafc98aa1db">
+              <AttributeID>ID Track</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="81397b9f-c853-4f6e-a601-a7d07eb26e0f">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0dcd2daf-3056-4ed0-a5f3-e4454512aa42">
+                    <TableID>dbo_fact_table</TableID>
+                    <ColumnID>ID_track_FK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="2329aca9-aa40-4d1e-b7cf-1b0837decbac">
+          <CubeDimensionID>Artist Dim</CubeDimensionID>
+          <MeasureGroupID>Track Artist Bridge</MeasureGroupID>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+    <MeasureGroup dwd:design-time-name="4775230a-2798-415f-97d1-f296a550a98a">
+      <ID>Track Artist Bridge</ID>
+      <Name>Track Artist Bridge</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="ced89816-7ba4-4364-84b5-2e2e47e1f1b0">
+          <ID>ID Track FK</ID>
+          <Name>ID Track FK</Name>
+          <Source dwd:design-time-name="035baba3-0093-440f-a6cb-0868f4266b66">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="e4bacc1b-c88d-4c36-b294-d9c4eb54e85a">
+              <TableID>dbo_track_artist_bridge</TableID>
+              <ColumnID>ID_track_FK</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="62d88125-5ac8-4d09-89ee-6324b6800b42">
+          <CubeDimensionID>Artist Dim</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="1369329d-aba8-445b-bd5c-9b08a7c893b2">
+              <AttributeID>ID Artist</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="4e4b415d-fee4-4a4e-ae5a-d53e87b2e90b">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="6baf970c-81bc-42ad-8d70-dde8e3fc9583">
+                    <TableID>dbo_track_artist_bridge</TableID>
+                    <ColumnID>ID_artist_FK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="78ff248c-92b1-481c-9f74-f3f181e8e7e2">
+          <CubeDimensionID>Track Dim</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="90f33fdc-5721-4c91-8c86-e165b65ea95e">
+              <AttributeID>ID Track</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="f4ae38e3-5a0e-4934-9ab1-66e940e63b5a">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="d697212d-c26d-454e-9a45-e791440a1fa3">
+                    <TableID>dbo_track_artist_bridge</TableID>
+                    <ColumnID>ID_track_FK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="d75897da-f0ef-4dec-ac34-5e50b73b0b32">
+    <DataSourceViewID>Group ID 16 DB</DataSourceViewID>
+  </Source>
+</Cube>

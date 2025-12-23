@@ -1,0 +1,665 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/22/2025 3:54:23 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ANKIT"
+  DTS:CreatorName="ANKIT\tanya"
+  DTS:DTSID="{B2B92057-746F-4CC6-8B1D-D300BB5581DD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{62013B5A-BE3A-460A-B453-3D277AD68984}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\summer_winter"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DA6E37E0-EA5C-4542-BE1F-14E4CB38AD21}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="summer_winter"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\summer_winter\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\summer_winter\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\summer_winter\Derived Column.Inputs[Derived Column Input].Columns[SummerSongs]"
+                      cachedDataType="i4"
+                      cachedName="SummerSongs"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerSongs]" />
+                    <inputColumn
+                      refId="Package\summer_winter\Derived Column.Inputs[Derived Column Input].Columns[WinterSongs]"
+                      cachedDataType="i4"
+                      cachedName="WinterSongs"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterSongs]" />
+                    <inputColumn
+                      refId="Package\summer_winter\Derived Column.Inputs[Derived Column Input].Columns[SummerStreams]"
+                      cachedDataType="i8"
+                      cachedName="SummerStreams"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerStreams]" />
+                    <inputColumn
+                      refId="Package\summer_winter\Derived Column.Inputs[Derived Column Input].Columns[WinterStreams]"
+                      cachedDataType="i8"
+                      cachedName="WinterStreams"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterStreams]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\summer_winter\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\summer_winter\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\summer_winter\Derived Column.Outputs[Derived Column Output].Columns[SongRatio]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\summer_winter\Derived Column.Outputs[Derived Column Output].Columns[SongRatio]"
+                      name="SongRatio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_R8)#{Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerSongs]} / (DT_R8)(#{Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterSongs]} == 0 ? 1 : #{Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterSongs]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_R8)SummerSongs / (DT_R8)(WinterSongs == 0 ? 1 : WinterSongs)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\summer_winter\Derived Column.Outputs[Derived Column Output].Columns[StreamRatio]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\summer_winter\Derived Column.Outputs[Derived Column Output].Columns[StreamRatio]"
+                      name="StreamRatio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_R8)#{Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerStreams]} / (DT_R8)(#{Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterStreams]} == 0 ? 1 : #{Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterStreams]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_R8)SummerStreams / (DT_R8)(WinterStreams == 0 ? 1 : WinterStreams)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\summer_winter\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\summer_winter\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\summer_winter\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\summer_winter\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\summer_winter\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[region_summer_winter_score]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\summer_winter\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{58991ECB-0BC4-491C-82A5-D0DAEFB2CE99}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_16_DB.Group_ID_16]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]" />
+                    <inputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SummerSongs]"
+                      cachedDataType="i4"
+                      cachedName="SummerSongs"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SummerSongs]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerSongs]" />
+                    <inputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WinterSongs]"
+                      cachedDataType="i4"
+                      cachedName="WinterSongs"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WinterSongs]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterSongs]" />
+                    <inputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SummerStreams]"
+                      cachedDataType="i8"
+                      cachedName="SummerStreams"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SummerStreams]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerStreams]" />
+                    <inputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WinterStreams]"
+                      cachedDataType="i8"
+                      cachedName="WinterStreams"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WinterStreams]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterStreams]" />
+                    <inputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SongRatio]"
+                      cachedDataType="r8"
+                      cachedName="SongRatio"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SongRatio]"
+                      lineageId="Package\summer_winter\Derived Column.Outputs[Derived Column Output].Columns[SongRatio]" />
+                    <inputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StreamRatio]"
+                      cachedDataType="r8"
+                      cachedName="StreamRatio"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreamRatio]"
+                      lineageId="Package\summer_winter\Derived Column.Outputs[Derived Column Output].Columns[StreamRatio]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="100"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SummerSongs]"
+                      dataType="i4"
+                      name="SummerSongs" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WinterSongs]"
+                      dataType="i4"
+                      name="WinterSongs" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SummerStreams]"
+                      dataType="i8"
+                      name="SummerStreams" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WinterStreams]"
+                      dataType="i8"
+                      name="WinterStreams" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SongRatio]"
+                      dataType="r8"
+                      name="SongRatio" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StreamRatio]"
+                      dataType="r8"
+                      name="StreamRatio" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\summer_winter\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\summer_winter\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    g.region,
+    SUM(CASE WHEN t.season IN (2, 3) THEN 1 ELSE 0 END) AS SummerSongs,
+    SUM(CASE WHEN t.season IN (1, 4) THEN 1 ELSE 0 END) AS WinterSongs,
+    SUM(CASE WHEN t.season IN (2, 3) THEN f.streams_1month ELSE 0 END) AS SummerStreams,
+    SUM(CASE WHEN t.season IN (1, 4) THEN f.streams_1month ELSE 0 END) AS WinterStreams
+FROM fact_table f
+JOIN time_dim t ON f.ID_time_FK = t.ID_time
+JOIN track_dim tr ON f.ID_track_FK = tr.ID_track
+JOIN track_artist_bridge b ON b.ID_track_FK = tr.ID_track
+JOIN artist_dim a ON a.ID_artist = b.ID_artist_FK
+JOIN geo_dim g ON g.geo_ID = a.geo_ID_FK
+GROUP BY g.region;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\summer_winter\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{58991ECB-0BC4-491C-82A5-D0DAEFB2CE99}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[131.114.50.57.Group_ID_16_DB.Group_ID_16]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      length="255"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerSongs]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SummerSongs]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerSongs]"
+                      name="SummerSongs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterSongs]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WinterSongs]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterSongs]"
+                      name="WinterSongs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerStreams]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SummerStreams]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[SummerStreams]"
+                      name="SummerStreams"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterStreams]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WinterStreams]"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].Columns[WinterStreams]"
+                      name="WinterStreams"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="255"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SummerSongs]"
+                      dataType="i4"
+                      name="SummerSongs" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WinterSongs]"
+                      dataType="i4"
+                      name="WinterSongs" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SummerStreams]"
+                      dataType="i8"
+                      name="SummerStreams" />
+                    <externalMetadataColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WinterStreams]"
+                      dataType="i8"
+                      name="WinterStreams" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SummerSongs]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SummerSongs]"
+                      name="SummerSongs" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WinterSongs]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WinterSongs]"
+                      name="WinterSongs" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SummerStreams]"
+                      dataType="i8"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SummerStreams]"
+                      name="SummerStreams" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WinterStreams]"
+                      dataType="i8"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WinterStreams]"
+                      name="WinterStreams" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\summer_winter.Paths[Derived Column Output]"
+              endId="Package\summer_winter\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\summer_winter\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\summer_winter.Paths[OLE DB Source Output]"
+              endId="Package\summer_winter\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\summer_winter\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\summer_winter"
+          TopLeft="154.166658243372,96.1999993310372" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\summer_winter">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\summer_winter\OLE DB Source"
+          TopLeft="240.833320174781,62.3999995660782" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\summer_winter\Derived Column"
+          TopLeft="304.999983335535,170.733332146075" />
+        <EdgeLayout
+          Id="Package\summer_winter.Paths[OLE DB Source Output]"
+          TopLeft="316.833320174781,103.999999566078">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.5666631607547,66.7333325799968"
+              Start="0,0"
+              End="64.5666631607547,59.2333325799968">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.3666662899984" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.3666662899984"
+                    Point2="0,33.3666662899984"
+                    Point3="4,33.3666662899984" />
+                  <mssgle:LineSegment
+                    End="60.5666631607547,33.3666662899984" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.5666631607547,33.3666662899984"
+                    Point2="64.5666631607547,33.3666662899984"
+                    Point3="64.5666631607547,37.3666662899984" />
+                  <mssgle:LineSegment
+                    End="64.5666631607547,59.2333325799968" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\summer_winter\OLE DB Destination"
+          TopLeft="379.999979237716,290.333331314392" />
+        <EdgeLayout
+          Id="Package\summer_winter.Paths[Derived Column Output]"
+          TopLeft="381.399983335535,212.333332146075">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84.1999959021808,77.9999991683165"
+              Start="0,0"
+              End="84.1999959021808,70.4999991683165">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.9999995841583" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.9999995841583"
+                    Point2="0,38.9999995841583"
+                    Point3="4,38.9999995841583" />
+                  <mssgle:LineSegment
+                    End="80.1999959021808,38.9999995841583" />
+                  <mssgle:CubicBezierSegment
+                    Point1="80.1999959021808,38.9999995841583"
+                    Point2="84.1999959021808,38.9999995841583"
+                    Point3="84.1999959021808,42.9999995841583" />
+                  <mssgle:LineSegment
+                    End="84.1999959021808,70.4999991683165" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\summer_winter\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\summer_winter\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

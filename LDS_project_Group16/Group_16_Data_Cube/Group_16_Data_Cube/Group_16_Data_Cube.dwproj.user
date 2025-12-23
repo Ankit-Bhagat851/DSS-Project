@@ -1,0 +1,29 @@
+<AnalysisServicesUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>Group ID 16 DB</Id>
+            <Name>Group ID 16 DB</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAS1k22e+N80CEXU3S8jEvdQAAAAAeAAAARwByAG8AdQBwACAASQBEACAAMQA2ACAARABCAAAAEGYAAAABAAAgAAAA+nHaLo6Fcv7R4jVSO9cedn18LeqqG72BqJG0shzl6m0AAAAADoAAAAACAAAgAAAA4crOStfImkS6C1S7FxjTeBpzkrBhm7068LD81nFKuEUgAAAA+eFN5oev7pfLIPPRH86DJOKvnPQGah1ML2HLjS4PyEpAAAAAmx9NXBngcQwP4bVodUuzCmzHNN1esHXk5sxXXGolgKJyO8NyiMpoAfGtYgrU3ehwXWeGGp7rEaIivoo6vdfJuA==</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>Group ID 16 DB</Id>
+            <Name>Group ID 16 DB</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAS1k22e+N80CEXU3S8jEvdQAAAAAeAAAARwByAG8AdQBwACAASQBEACAAMQA2ACAARABCAAAAEGYAAAABAAAgAAAApFRzAKPUVhECnf2PokyySqhtt5of3mmPhVMZ9cqotScAAAAADoAAAAACAAAgAAAAm3d+r6JIcmGEomuVdwqtdPlUwgHuU7I3m4LsgS7YeksgAAAACCG/3RDSbYIkKK3XCIZwnBqw8GHA3pVqZ9hmROhKtftAAAAATqaOU8tpcnnHyAgFQxNtn4XocGjoBPgBrjx8GaMin6XEhKcy/50DN/07juwyPBnalRPYYj42ZZKX73CL8lqPnw==</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <TargetServer>localhost</TargetServer>
+        <TargetDatabase>Group_16_Data_Cube</TargetDatabase>
+        <StartObject>
+          <ObjectId></ObjectId>
+          <ObjectType>Current</ObjectType>
+        </StartObject>
+      </Options>
+    </Configuration>
+  </Configurations>
+</AnalysisServicesUserConfiguration>
